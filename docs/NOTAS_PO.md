@@ -19,5 +19,17 @@
 - Duplicado exacto (mismo `event_id`): responder 200/204 y no duplicar en la base.
 - Evento con `timestamp` anterior al último procesado: **no** pisa el estado actual, pero **sí** queda en el historial.
 
+## Estados y transiciones
+- No hay regla formal de transiciones (Mario tiene que chequearlo con operaciones).
+- Para el MVP: **el estado actual es el del evento con timestamp más reciente**, sin máquina de estados.
+- Status fuera de los 5 conocidos: lo rechazo con 400 (supuesto mío, avisado al PO).
+- Evento de un `shipment_id` nunca visto, aunque no sea `CREADO`: se acepta y se crea el envío.
+
+## Webhook
+- Sin autenticación para el MVP (pedido explícito del PO: foco en dominio y datos).
+
+## Consultas
+- Historial ordenado por `timestamp` del evento (cuándo ocurrió), no por llegada.
+- Alertas: alcanza con que el GET del envío diga `demorado` y `entregado_con_demora`. Sin listado de demorados ni notificaciones activas.
+
 ## Dudas abiertas
-- Transiciones válidas.
