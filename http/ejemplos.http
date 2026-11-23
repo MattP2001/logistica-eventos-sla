@@ -1,0 +1,29 @@
+### Alta del envío con fecha estimada
+POST http://localhost:8080/webhooks/operador/eventos
+Content-Type: application/json
+
+{"event_id":"evt-001","shipment_id":"SHP-123","status":"CREADO","timestamp":"2026-11-23T08:00:00-03:00","estimated_delivery_date":"2026-11-25T18:00:00-03:00"}
+
+### Reenvío del mismo evento (responde "duplicado")
+POST http://localhost:8080/webhooks/operador/eventos
+Content-Type: application/json
+
+{"event_id":"evt-001","shipment_id":"SHP-123","status":"CREADO","timestamp":"2026-11-23T08:00:00-03:00","estimated_delivery_date":"2026-11-25T18:00:00-03:00"}
+
+### En distribución
+POST http://localhost:8080/webhooks/operador/eventos
+Content-Type: application/json
+
+{"event_id":"evt-003","shipment_id":"SHP-123","status":"EN_DISTRIBUCION","timestamp":"2026-11-24T09:00:00-03:00"}
+
+### Llega tarde un evento anterior (responde "solo_historial")
+POST http://localhost:8080/webhooks/operador/eventos
+Content-Type: application/json
+
+{"event_id":"evt-002","shipment_id":"SHP-123","status":"EN_TRANSITO","timestamp":"2026-11-23T15:00:00-03:00"}
+
+### Estado actual
+GET http://localhost:8080/envios/SHP-123
+
+### Historial cronológico
+GET http://localhost:8080/envios/SHP-123/eventos

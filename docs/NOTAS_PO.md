@@ -32,4 +32,12 @@
 - Historial ordenado por `timestamp` del evento (cuándo ocurrió), no por llegada.
 - Alertas: alcanza con que el GET del envío diga `demorado` y `entregado_con_demora`. Sin listado de demorados ni notificaciones activas.
 
-## Dudas abiertas
+## Fechas y errores
+- Timestamps en ISO 8601 con zona horaria (offset o Z): no hay que suponer la hora de Argentina.
+- Política de reintentos del operador: Mario no la conoce. Acordamos 400 para payload inválido y 500 para errores nuestros.
+- Respuesta del GET validada por Mario: `demorado` calculado al consultar alcanza; no hace falta el tiempo de demora.
+
+## Dudas abiertas (Mario las chequea con operaciones)
+- Re-pactación de la fecha estimada: tomé la última informada; queda como supuesto en el README.
+- Si `ENTREGADO` y `CANCELADO` son estados finales.
+- Qué hacer con un `status` fuera de los cinco conocidos (hoy: 400).
