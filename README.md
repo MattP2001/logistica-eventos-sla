@@ -122,6 +122,7 @@ go test ./...
 - `internal/envios`: reglas de demora (incluido el borde "justo en la fecha") y `Aplicar`
   (fuera de orden, timestamps iguales, envío nuevo sin `CREADO`, fecha vieja que no pisa la
   re-pactada).
+- `internal/almacen`: resultados aplicado/duplicado/solo_historial, estado persistido y orden del historial.
 - `internal/api`: la API real contra SQLite en memoria: duplicado, fuera de orden, demorado contra
   la hora actual, entregado con demora, validaciones y 404.
 
