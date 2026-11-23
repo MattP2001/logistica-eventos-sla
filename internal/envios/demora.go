@@ -8,6 +8,7 @@ type Envio struct {
 	Estado               Estado
 	EstadoDesde          time.Time  // timestamp del evento que fijó el estado actual
 	FechaEntregaEstimada *time.Time // la última informada por el operador
+	ETAInformadaEn       *time.Time // timestamp del evento que trajo esa fecha
 	EntregadoEn          *time.Time
 	ActualizadoEn        time.Time
 }
