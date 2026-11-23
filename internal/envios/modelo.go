@@ -32,12 +32,12 @@ func (e Estado) Cerrado() bool { return e == Entregado || e == Cancelado }
 
 // Evento es una novedad del operador tal como la persistimos.
 type Evento struct {
-	EventID               string
-	ShipmentID            string
-	Estado                Estado
-	OcurridoEn            time.Time
-	FechaEntregaEstimada  *time.Time
-	RecibidoEn            time.Time
+	EventID              string
+	ShipmentID           string
+	Estado               Estado
+	OcurridoEn           time.Time
+	FechaEntregaEstimada *time.Time
+	RecibidoEn           time.Time
 }
 
 // ErrValidacion envuelve los errores de un payload inválido (se responde 400).
